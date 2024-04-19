@@ -39,6 +39,7 @@
 
       - name: Run Unit Tests
         run: npm test
+        working-directory: reactapp/src/tests
 
       - name: Build
         run: npm run build

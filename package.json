@@ -10,7 +10,9 @@
 
   },
   "devDependencies": {
-    "webpack": "^5.91.0"
+    "webpack": "^5.91.0",
+    "jest": "^29.7.0"
+
   },
   "repository": {
     "type": "git",
