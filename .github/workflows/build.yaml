@@ -1,0 +1,45 @@
+  name: Build
+
+  on:
+    pull_request:
+      types: [opened, synchronize]
+      branches:
+        - main  
+        - develop
+        - feature/organizing_datasets
+    push:
+      branches:
+        - main  
+        - develop
+        - feature/organizing_datasets
+
+  jobs:
+    debug-vars:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Debug Event
+            run: echo "${{ toJson(github.event) }}"
+          - name: Debug Pull Request
+            run: echo "${{ toJson(github.event.pull_request) }}"
+
+    build:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install  
+
+      - name: Run Unit Tests
+        run: npm test
+        working-directory: reactapp/src/tests
+
+      - name: Build
+        run: npm run build

@@ -1,0 +1,23 @@
+{
+  "name": "olimpiquiz",
+  "version": "1.0.0",
+  "description": "Jogo de teste ao conhecimento pessoal sobre os atltas das olimpíadas",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "jest",
+    "start": "node server.js"
+
+  },
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "jest": "^29.7.0"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedropiin/olympiquiz/tree/main"
+  },
+  "author": "",
+  "license": "ISC"
+}
