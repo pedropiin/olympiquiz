@@ -1,13 +1,13 @@
   name: Build
 
   on:
-    push:
+    pull_request:
       types: [opened, synchronize]
       branches:
         - main  
         - develop
         - feature/organizing_datasets
-    pull_request:
+    push:
       branches:
         - main  
         - develop
@@ -29,14 +29,14 @@
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-          uses: actions/setup-node@v2
-          with:
-            node-version: 20
-
       - name: Start Server
           run: npm start
           working-directory: olympiquiz
+
+      - name: Set up Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: '20'
 
       - name: Install dependencies
         run: npm install  
