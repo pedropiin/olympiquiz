@@ -36,12 +36,9 @@
 
       - name: Install dependencies
         run: npm install  
-        working-directory: olympiquiz
 
       - name: Run Unit Tests
         run: npm test
-        working-directory: olympiquiz
 
       - name: Build
         run: npm run build
-        working-directory: olympiquiz
