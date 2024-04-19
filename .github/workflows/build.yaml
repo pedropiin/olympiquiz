@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    types: [opened, synchronize]
+    branches:
+      - main  
+      - develop
+      - feature/organizing_datasets
+  pull_request:
+    branches:
+      - main  
+      - develop
+      - feature/organizing_datasets
+
+jobs:
+  debug-vars:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Debug Event
+          run: echo "${{ toJson(github.event) }}"
+        - name: Debug Pull Request
+          run: echo "${{ toJson(github.event.pull_request) }}"
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+    - name: Start Server
+        run: npm start
+        working-directory: olympiquiz
+
+    - name: Install dependencies
+      run: npm install  
+      working-directory: olympiquiz
+
+    - name: Run Unit Tests
+        run: npm test
+        working-directory: olympiquiz
+
+    - name: Build
+      run: npm run build
+      working-directory: olympiquiz
