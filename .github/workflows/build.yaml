@@ -43,8 +43,8 @@
         working-directory: olympiquiz
 
       - name: Run Unit Tests
-          run: npm test
-          working-directory: olympiquiz
+        run: npm test
+        working-directory: olympiquiz
 
       - name: Build
         run: npm run build
