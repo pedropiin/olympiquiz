@@ -55,7 +55,7 @@ else {
     filePath = path.resolve(__dirname, "../../handling_data/data/medalists.csv");
 }
 //const headers = ["ID", "NAME", "SEX", "AGE", "COUNTRY", "YEAR", "SPORT", "MEDALS"];
-function selectRandomAthlete(filePath) {
+export function selectRandomAthlete(filePath) {
     return __awaiter(this, void 0, void 0, function () {
         var arrayAthletes, parser, _a, parser_1, parser_1_1, atleta, e_1_1, randomIndex, error_1;
         var _b, e_1, _c, _d;
