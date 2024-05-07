@@ -9,14 +9,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    name: Install modules
-      run: npm install
-      working-directory: react-project
+    - name: Installing modules
+    run: npm install
+    working-directory: react-project
 
-    - name: Run tests
-      run: npm test
-      working-directory: react-project
+    - name: Running tests
+    run: npm test
+    working-directory: react-project
 
-    - name: Run Build
-      run: npm run build
-      working-directory: react-project
+    - name: Running Build
+    run: npm run build
+    working-directory: react-project
