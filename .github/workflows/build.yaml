@@ -1,22 +1,22 @@
 name: Build App
-on: 
-  workflow_dispatch:
+'on':
+  workflow_dispatch: null
   pull_request:
-    types: [opened, synchronize, reopened]
+    types:
+      - opened
+      - synchronize
+      - reopened
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Installing modules
-    run: npm install
-    working-directory: react-project
-
-    - name: Running tests
-    run: npm test
-    working-directory: react-project
-
-    - name: Running Build
-    run: npm run build
-    working-directory: react-project
+      - uses: actions/checkout@v2
+      - name: Installing modules
+        run: npm install
+        working-directory: react-project
+      - name: Running tests
+        run: npm test
+        working-directory: react-project
+      - name: Running Build
+        run: npm run build
+        working-directory: react-project
