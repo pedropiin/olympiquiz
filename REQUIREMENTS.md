@@ -13,4 +13,4 @@ viessem em sua maioria de indivivíduos não familiarizados com o assunto, não 
 - Juntamente, investigamos se a ideia de projeto que estavamos apresentando lhes era interessante. Assim, vimos que a maioria ou se interessa ativamente ou está aberto a testar
 ![]("./assets-md/interest-pizza.png")
 # Etapa 3: Conclusões
-- 
+- Em suma, extraindo as informações da base de clientes conseguimos validar o nosso projeto e entender quais são as nossas prioridades na hora do desenvolvimento do projeto. Por meio das respostas, metrificamos o nível de interesse do público geral, que foi positivo, o que corrobora para a continuidade da nossa ideia. Além disso, obtivemos alguns insights importantes, como pessoas que citaram uma tabela de placares como algo imprescindível ao desenvolvimento de um quiz. Isso criou novas demandas para o projeto, e nos fez adaptar o nosso desenvolvimento a essas novas demandas. Outro ponto importante foi o reconhecimento dos quizzes como ferramentas interessantes para adquirir conhecimento, aumentando a relevância do nosso projeto para o público interessado.
