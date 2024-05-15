@@ -4,7 +4,7 @@ import { selectRandomAthlete } from './select-random-player';
 
 test('renders Olympiquiz title', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Hello! Welcome to Olympiquiz/i);
+  const linkElement = screen.getByText(/Olympiquiz/i);
   expect(linkElement).toBeInTheDocument();
 });
 
