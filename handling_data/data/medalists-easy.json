@@ -1,13 +1,13 @@
 [
  {
-  "ID": 94406,
-  "NAME": "Michael Phelps",
-  "SEX": "M",
-  "AGE": 31,
-  "COUNTRY": "USA",
-  "YEAR": 2016,
-  "SPORT": "Swimming",
-  "MEDALS": 28
+  "id": 94406,
+  "name": "Michael Phelps",
+  "sex": "M",
+  "age": 31,
+  "country": "USA",
+  "year": 2016,
+  "sport": "Swimming",
+  "medals": 28
  },
  {
   "ID": 85613,
