@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 body {
     font-family: 'Sans', sans-serif;
 }
@@ -7,46 +9,83 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background-color: #ffece4;
+}
+
+.home-text {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    display: flex;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .back-button {
     position: absolute;
-    width: 180px;
-    left: 1140px;
-    top: 53px;
+    top: 40px;
+    right: 40px;
+    width: 10%;
+    
     display: flex;
-    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+    
+    margin: 10px 0;
+    padding: 10px 20px;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+    font-size: 30px;
 }
 
-.username-component {
+.login-text {
+    font-size: 1.5em;
+    text-transform: uppercase;
+
+}
+
+.login-info-container {
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.username-container {
     position: relative;
     margin-bottom: 1.25em;
 
 }
 
-.login-text {
-    font-size: xx-large;
-}
 
-input {
+#username-input, #password-input {
     border: 0;
     border-bottom: 3px;
+    margin-top: 12px;
     border-style: solid;
     border-color: #dfdfdf;
+    border-radius: 60px;
+
+    padding: 20px;
     outline: none;
+
+    font-weight: 500;
+    font-size: 1em;
 }
 
 label {
-    margin-bottom: 5px;
-    top: 0;
     align-items: center;
     cursor: text;
 }
 
 input, label {
     font-size: 1em;
-    width: 40%;
-    height: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0 auto;
 }
 
 
