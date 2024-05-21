@@ -4,7 +4,7 @@ body {
     font-family: 'Sans', sans-serif;
 }
 
-.login-container {
+.container {
     position: relative;
     width: 100%;
     height: 100vh;
@@ -23,50 +23,64 @@ body {
 
 .back-button {
     position: absolute;
+    overflow: hidden;
     top: 40px;
     right: 40px;
     width: 10%;
     
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     align-content: center;
     cursor: pointer;
     
-    margin: 10px 0;
-    padding: 10px 20px;
-    border-radius: 8px;
-
-    background-color: #ffffff;
-    font-size: 30px;
+    padding: 1% 1%;
+    border-radius: 5rem;
+    
+    color: #000000;
+    background-color: #ffece4;
+    font-size: 1.5em;
+    letter-spacing: .15rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.login-text {
-    font-size: 1.5em;
+h1 {
+    font-size: 2.5em;
     text-transform: uppercase;
 
 }
 
-.login-info-container {
-    justify-content: center;
+.form {
+    text-align: center;
+}
+
+.login-container {
+    justify-content: right;
     align-items: center;
     padding: 40px;
+    vertical-align: center;
+    display: inline-block;
 }
 
-.username-container {
-    position: relative;
-    margin-bottom: 1.25em;
-
+.signup-container {
+    padding: 40px;
+    align-items: center;
+    vertical-align: center;
+    display: inline-block;
 }
 
-
-#username-input, #password-input {
+#username-login-input, #password-login-input, 
+#email-signup-input, #username-signup-input,
+#password-signup-input {
     border: 0;
     border-bottom: 3px;
     margin-top: 12px;
     border-style: solid;
     border-color: #dfdfdf;
     border-radius: 60px;
+    margin-bottom: 1.5em;
 
     padding: 20px;
     outline: none;
@@ -78,10 +92,10 @@ body {
 label {
     align-items: center;
     cursor: text;
+    font-size: 1.5em;
 }
 
 input, label {
-    font-size: 1em;
     display: flex;
     flex-direction: column;
     width: 20%;

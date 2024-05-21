@@ -20,6 +20,7 @@ body {
 
   .start-button {
     position: absolute;
+    
     bottom: 220px;
     left: 210px;
     display: flex;
