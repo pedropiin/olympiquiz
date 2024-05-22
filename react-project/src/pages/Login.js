@@ -10,8 +10,8 @@ const Login = () => {
                 <p>OlympiQuiz</p>
             </div>
             <button className='back-button'>Voltar</button>
-            <div className='form'>
-                <div className='signup-container'>
+            <div className='forms-container'>
+                <div className='signup-container' id='signup-container'>
                     <div className='signup-text'>
                         <h1>Sign Up</h1>
                     </div>
@@ -27,8 +27,9 @@ const Login = () => {
                         <label for='password-signup-input'>Password:</label>
                         <input type='password' id='password-signup-input' name='password-signup-input'></input>
                     </div>
+                    <button className='signup-button' id="signup-button">sign up</button>
                 </div>
-                <div className='login-container'>
+                <div className='login-container' id='login-container'>
                     <div className='login-text'>
                         <h1>Login</h1>
                     </div>
@@ -40,6 +41,11 @@ const Login = () => {
                         <label for='password-login-input'>Password:</label>
                         <input type='password' id='password-login-input' name='password-login-input'></input>
                     </div>
+                    <div>
+                        <label id="remember" name="remember" class='checkbox'>Remember Me</label>
+                        <input id="checkbox-remember" type="checkbox" checked></input>
+                    </div>
+                    <button className='signin-button' id="signin-button">sign in</button>
                 </div>
             </div>
         </div>
