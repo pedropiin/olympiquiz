@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Home from './pages/Home';
 import { selectRandomAthlete } from './select-random-player';
 
 test('renders Olympiquiz title', () => {
-  render(<App />);
+  render(<Home />);
   const linkElement = screen.getByText(/OlympiQuiz/i);
   expect(linkElement).toBeInTheDocument();
 });
