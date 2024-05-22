@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/Login.css';
+import { validateLogin } from '../getLogin';
+import { validateSignUp } from '../getLogin';
 
 //TODO: Inserir símbolo login antes da label do username e senha
 const Login = () => {
@@ -29,7 +31,7 @@ const Login = () => {
                         <label for='password-signup-input'>Password:</label>
                         <input type='password' id='password-signup-input' name='password-signup-input'></input>
                     </div>
-                    <button className='signup-button' id="signup-button">sign up</button>
+                    <button className='signup-button' id="signup-button" onClick={validateSignUp}>sign up</button>
                 </div>
                 <div className='login-container' id='login-container'>
                     <div className='login-text'>
@@ -43,9 +45,11 @@ const Login = () => {
                         <label for='password-login-input'>Password:</label>
                         <input type='password' id='password-login-input' name='password-login-input'></input>
                     </div>
-                    
-                    <button className='signin-button' id="signin-button">sign in</button>
+                    <button className='signin-button' id="signin-button" onClick={validateLogin}>sign in</button>
                 </div>
+            </div>
+            <div className='error-container'>
+                <p id='error-message'>Testando essa merda</p>
             </div>
         </div>
     );

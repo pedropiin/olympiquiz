@@ -14,7 +14,7 @@ body {
 
 .home-text {
     position: absolute;
-    top: 0px;
+    top: 50px;
     left: 40px;
     display: flex;
     font-size: 40px;
@@ -68,7 +68,7 @@ body {
 h1 {
     font-size: 2.5em;
     text-transform: uppercase;
-
+    margin-bottom: 20px;
 }
 
 .forms-container {
@@ -82,7 +82,7 @@ h1 {
 }
 
 #signup-container, #login-container {
-    padding: 2em;
+    padding: 3.5em;
     border-radius: 1rem;
     box-shadow: 5px 15px 50px #303030;
 }
@@ -118,5 +118,24 @@ input, label {
     margin: 0 auto;
 }
 
+#error-container {
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+}
 
+#error-message {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    padding: 1em;
 
+    text-align: center;
+
+    border: 3px solid #700000;
+    background-color: #ff7171;
+    border-radius: 1rem;
+
+    opacity: 0;
+}
