@@ -2,9 +2,14 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import Home from './pages/Home';
 import { selectRandomAthlete } from './select-random-player';
+import { BrowserRouter } from 'react-router-dom';
 
 test('renders Olympiquiz title', () => {
-  render(<Home />);
+  render(
+    <BrowserRouter>
+      <Home />
+    </BrowserRouter>
+  );
   const linkElement = screen.getByText(/OlympiQuiz/i);
   expect(linkElement).toBeInTheDocument();
 });
