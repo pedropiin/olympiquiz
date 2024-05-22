@@ -9,7 +9,7 @@ const Login = () => {
             <div className='home-text'>
                 <p>OlympiQuiz</p>
             </div>
-            <Link to={'/home'}>
+            <Link to={'/'}>
                 <button className='back-button'>Back</button>
             </Link>
             <div className='forms-container'>

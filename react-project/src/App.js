@@ -4,11 +4,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 
 const App = () => {
+  
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
