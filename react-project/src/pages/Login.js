@@ -9,7 +9,7 @@ const Login = () => {
             <div className='home-text'>
                 <p>OlympiQuiz</p>
             </div>
-            <button className='back-button'>Voltar</button>
+            <button className='back-button'>Back</button>
             <div className='forms-container'>
                 <div className='signup-container' id='signup-container'>
                     <div className='signup-text'>
@@ -40,10 +40,6 @@ const Login = () => {
                     <div className='password-login-container'>
                         <label for='password-login-input'>Password:</label>
                         <input type='password' id='password-login-input' name='password-login-input'></input>
-                    </div>
-                    <div>
-                        <label id="remember" name="remember" class='checkbox'>Remember Me</label>
-                        <input id="checkbox-remember" type="checkbox" checked></input>
                     </div>
                     <button className='signin-button' id="signin-button">sign in</button>
                 </div>
