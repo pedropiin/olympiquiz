@@ -1,5 +1,3 @@
-import { json } from "react-router-dom";
-
 function getUsers() {
     const users = localStorage.getItem('users');
     if (users) {
