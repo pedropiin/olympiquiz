@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../pages/Login.css';
 import { validateLogin } from '../getLogin';
 import { validateSignUp } from '../getLogin';
+import { deleteUsers } from '../getLogin';
 
 //TODO: Inserir símbolo login antes da label do username e senha
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
             <div className='home-text'>
                 <p>OlympiQuiz</p>
             </div>
+            <button className='delete-users-button' id='delete-users-button' onClick={deleteUsers}>DELETE TEST</button>
             <Link to={'/'}>
                 <button className='back-button'>Back</button>
             </Link>
@@ -49,7 +51,10 @@ const Login = () => {
                 </div>
             </div>
             <div className='error-container'>
-                <p id='error-message'>Testando essa merda</p>
+                <p id='error-message'>Replace Me</p>
+            </div>
+            <div className='success-container'>
+                <p id='success-message'>Replace Me</p>
             </div>
         </div>
     );
