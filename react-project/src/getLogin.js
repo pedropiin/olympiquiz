@@ -27,12 +27,31 @@ function authenticationSucess(message) {
     }, 1000);
 }
 
+// Temporary function to use only in testing phase.
+// Remember to delete it before deploying
 export function deleteUsers(event) {
     event.preventDefault();
     localStorage.removeItem('users');
 }
 
-export function validateLogin(event) {
+async function sha256(string) {
+    const encoder = new TextEncoder();
+    const decodedString = encoder.encode(string);
+
+    const hashString = await crypto.subtle.digest("SHA-256", decodedString);
+    const hashArr = Array.from(new Uint8Array(hashString));
+    const hashHex = hashArr.map((bytes) => bytes.toString(16).padStart(2, '0')).join('');
+
+    return hashHex;
+}
+
+function genSalt(length) {
+    const arr = new Uint8Array(length);
+    window.crypto.getRandomValues(arr);
+    return Array.from(arr, byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+export async function validateLogin(event) {
     event.preventDefault();
     const usernameInput = document.getElementById("username-login-input").value;
     const passwordInput = document.getElementById("password-login-input").value;
@@ -41,18 +60,23 @@ export function validateLogin(event) {
         showError("Please fill in both the username and password inputs.")
     } else {
         const listUsers = getUsers();
-        const user = listUsers.find(user => user.username === usernameInput && user.password === passwordInput);
+        const user = listUsers.find(user => user.username === usernameInput);
     
         if (user) {
-            authenticationSucess("Login successful!")
+            const hashInput = await sha256(passwordInput.concat(user.salt));
+            if (user.hash === hashInput) {
+                authenticationSucess("Login successful!")
+            } else {
+                showError("Password incorrect. Please try again.")
+            }
         } else {
-            showError("Username or Password incorret. Please try again.")
+            showError("Username incorrect. Please try again.")
         }
     }
 
 }
 
-export function validateSignUp(event) {
+export async function validateSignUp(event) {
     event.preventDefault();
     const emailInput = document.getElementById("email-signup-input").value;
     const usernameInput = document.getElementById("username-signup-input").value;
@@ -72,7 +96,9 @@ export function validateSignUp(event) {
         } else if (usedUsername) {
             showError("Username already in use. Please log in or create an account using a different username.")
         } else {
-            listUsers.push({email: emailInput, username: usernameInput, password: passwordInput});
+            var saltNewUser = genSalt(16);
+            const hashPassword = await sha256(passwordInput.concat(saltNewUser));
+            listUsers.push({email: emailInput, username: usernameInput, salt: saltNewUser, hash: hashPassword});
             saveUsers(listUsers);
             authenticationSucess("Account creation successful!")
         }
