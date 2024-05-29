@@ -8,7 +8,7 @@
 # Arquitetura do projeto
 
 ## Diagrama de componentes
-<img src="./assets-md/diagrama.jpg" width="auto" height="auto">
+<img src="./assets-md/diagrama.jpg" width="570px" height="800px">
 
 ## Estilo arquitetural
 > Para o nosso projeto, optamos pelo estilo MVC (Model-View-Controller). Optamos por esse estilo devido à sua grande compatibilidade com aplicações web e tambem devido ao maior nível de organização que ele garante ao projeto.
