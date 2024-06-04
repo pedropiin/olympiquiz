@@ -1,6 +1,8 @@
 import React from 'react';
+import { validateSignUp } from '../getLogin';
+import './SignUp.css';
 
-const SignUp = () => {
+export const SignUp = () => {
     return (
         <div className='signup-container' id='signup-container'>
             <div className='signup-text'>

@@ -1,0 +1,43 @@
+#login-container {
+    padding: 3.5em;
+    border-radius: 1rem;
+    box-shadow: 5px 15px 50px #303030;
+}
+
+#signin-button {
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    align-content: center;
+
+    margin-top: 20px;
+    padding: 5%;
+    width: 80%;
+    border-radius: 5rem;
+
+    color: #000000;
+    background-color: #f3d4c7;
+    font-size: 1.5em;
+    letter-spacing: .15rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+#username-login-input,
+#password-login-input {
+    border: 0;
+    border-bottom: 3px;
+    margin-top: 12px;
+    border-style: solid;
+    border-color: #dfdfdf;
+    border-radius: 1rem;
+    margin-bottom: 1.5em;
+
+    padding: 20px;
+    outline: none;
+    width: 20rem;
+
+    font-weight: 500;
+    font-size: 1em;
+}
