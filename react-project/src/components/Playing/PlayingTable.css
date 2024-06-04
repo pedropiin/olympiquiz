@@ -1,0 +1,22 @@
+.container {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #f8f8f8;
+}
+
+tdbody tr {
+    border-bottom: 1px solid #dddddd;
+}
