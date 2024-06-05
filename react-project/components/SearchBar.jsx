@@ -20,5 +20,6 @@ export const SearchBar = ({ setResults }) => {
         onChange={(e) => handleChange(e.target.value)}
       />
     </div>
+    
   );
 };
