@@ -7,12 +7,14 @@ const Home = () => {
   return (
     <div className="home-container">
       <img src={homeImage} alt="Home" className="home-image" />
-        <div className='welcome-text'> <p>Welcome to </p></div>
-        <div className='olympiquiz-text'> <p>OlympiQuiz</p></div>
+      <div className='welcome-text'> <p>Welcome to </p></div>
+      <div className='olympiquiz-text'> <p>OlympiQuiz</p></div>
+      <Link to="/playing">
         <button className="start-button">Start</button>
-        <Link to="/login">
-          <button className="sign-in-button">Sign in</button>
-        </Link>
+      </Link>
+      <Link to="/login">
+        <button className="sign-in-button">Sign in</button>
+      </Link>
     </div>
   );
 }
