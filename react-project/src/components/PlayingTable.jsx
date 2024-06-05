@@ -22,7 +22,7 @@ function PlayingTable() {
             </thead>
             <tbody>
                 {athletes.map((athlete, index) => (
-                    <tr key={index}>
+                    <tr key={athlete.id}>
                         <td>{index + 1}</td>
                         <td>{athlete.name}</td>
                         <td>{athlete.nationality}</td>

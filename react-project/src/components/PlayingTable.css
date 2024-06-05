@@ -3,8 +3,14 @@
 }
 
 table {
-    width: 100%;
+    width: 60%;
+    max-width: 800px;
     border-collapse: collapse;
+    margin-bottom: 120px;
+    background-color: antiquewhite;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th,
@@ -14,10 +20,9 @@ td {
 }
 
 thead {
-    align-self: center;
-    margin: auto;
+    background-color: burlywood;
 }
 
-tdbody tr {
+tbody tr {
     border-bottom: 1px solid #dddddd;
 }
