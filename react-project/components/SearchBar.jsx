@@ -1,30 +1,14 @@
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-
-import "./SearchBar.css";
+import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import './SearchBar.css';
+import dataService from './dataService';
 
 export const SearchBar = ({ setResults }) => {
-  const [input, setInput] = useState("");
-
-  const fetchData = (value) => {
-    fetch("https://raw.githubusercontent.com/pedropiin/olympiquiz/search_bar/handling_data/data/medalists.json")
-      .then((response) => response.json())
-      .then((json) => {
-        const results = json.filter((user) => {
-          return (
-            value &&
-            user &&
-            user.name &&
-            user.name.toLowerCase().includes(value)
-          );
-        });
-        setResults(results);
-      });
-  };
+  const [input, setInput] = useState('');
 
   const handleChange = (value) => {
     setInput(value);
-    fetchData(value);
+    dataService.fetchData(value).then(results => setResults(results));
   };
 
   return (
