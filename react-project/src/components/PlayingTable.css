@@ -1,0 +1,23 @@
+.container {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    align-self: center;
+    margin: auto;
+}
+
+tdbody tr {
+    border-bottom: 1px solid #dddddd;
+}
