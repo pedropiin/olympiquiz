@@ -13,6 +13,8 @@ function saveUsers(users) {
 
 function showError(error) {
     const errorMsg = document.getElementById("error-message");
+    const successMsg = document.getElementById("success-message");
+    successMsg.style.opacity = 0;
     errorMsg.innerText = error;
     errorMsg.style.opacity = 0;
     errorMsg.style.opacity = 1;
@@ -20,6 +22,8 @@ function showError(error) {
 
 function authenticationSucess(message) {
     const successMsg = document.getElementById("success-message");
+    const errorMsg = document.getElementById("error-message");
+    errorMsg.style.opacity = 0;
     successMsg.innerText = message;
     successMsg.style.opacity = 1;
     setTimeout(() => {
@@ -73,8 +77,32 @@ export async function validateLogin(event) {
             showError("Username incorrect. Please try again.")
         }
     }
-
 }
+
+async function encryptStore(emailInput, usernameInput, passwordInput) {
+    const listUsers = getUsers();
+    
+    var saltNewUser = genSalt(16);
+    const hashPassword = await sha256(passwordInput.concat(saltNewUser));
+    listUsers.push({email: emailInput, username: usernameInput, salt: saltNewUser, hash: hashPassword});
+    
+    saveUsers(listUsers);
+    authenticationSucess("Account creation successful!");
+}
+
+async function completeSignUp(emailInput, usernameInput, passwordInput) {
+    const listUsers = getUsers();
+    const usedEmail = listUsers.some(user => user.email === emailInput);
+    const usedUsername = listUsers.some(user => user.username === usernameInput);
+
+    if (usedEmail) {
+        showError("Email already in use. Please log in or create an account using a different email.");
+    } else if (usedUsername) {
+        showError("Username already in use. Please log in or create an account using a different username.")
+    } else {
+        await encryptStore(emailInput, usernameInput, passwordInput);
+    }
+} 
 
 export async function validateSignUp(event) {
     event.preventDefault();
@@ -87,21 +115,7 @@ export async function validateSignUp(event) {
     } else if (!emailInput.includes('@')) {
         showError("Please use a valid email.");
     } else {
-        const listUsers = getUsers();
-        const usedEmail = listUsers.some(user => user.email === emailInput);
-        const usedUsername = listUsers.some(user => user.username === usernameInput);
-    
-        if (usedEmail) {
-            showError("Email already in use. Please log in or create an account using a different email.");
-        } else if (usedUsername) {
-            showError("Username already in use. Please log in or create an account using a different username.")
-        } else {
-            var saltNewUser = genSalt(16);
-            const hashPassword = await sha256(passwordInput.concat(saltNewUser));
-            listUsers.push({email: emailInput, username: usernameInput, salt: saltNewUser, hash: hashPassword});
-            saveUsers(listUsers);
-            authenticationSucess("Account creation successful!")
-        }
+        completeSignUp(emailInput, usernameInput, passwordInput);
     }
 } 
 
