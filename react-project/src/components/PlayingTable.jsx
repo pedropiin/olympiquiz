@@ -4,7 +4,8 @@ import "./PlayingTable.css";
 //So para testar
 const athletes = [
     { id: 1, name: 'Michael Phelps', nationality: 'USA', sport: 'Swimming', year: 2012, sex: 'M' },
-    { id: 2, name: 'Simone Biles', nationality: 'USA', sport: 'Gymnastics', year: 2016, sex: 'F' }
+    { id: 2, name: 'Simone Biles', nationality: 'USA', sport: 'Gymnastics', year: 2016, sex: 'F' },
+
 ];
 
 function PlayingTable() {
