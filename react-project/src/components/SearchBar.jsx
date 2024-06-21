@@ -1,35 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './SearchBar.css';
 
-const SearchBar = ({input, onChange}) => {
+const SearchBar = ({ input, onChange, addAthlete, suggestions }) => {
+
     const handleInputChange = (e) => {
         onChange(e.target.value);
-      };
+    };
 
-    const BarStyling = {width:"500px",background:"#F2F1F9", border:"", padding:"0.5rem"
-                        ,rigth:"50rem", border_radius:"1px"};
-    const ButtonStyling = {right:"55rem"}
-    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addAthlete(input);
+    }
+
+    const handleSuggestion = (athlete) => {
+        addAthlete(athlete.name);
+    }
+
     return (
-        <form className="search-bar">
-            <input 
-                type="text"
-                style={BarStyling}
-                value={input}
-                placeholder={"Search for an Athlete"}
-                onChange={handleInputChange}
-                className="search-input"
+        <div className="search-bar-container">
+            <form className="search-bar" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={input}
+                    placeholder="Search for an Athlete..."
+                    onChange={handleInputChange}
+                    className="search-input"
                 />
-
-            <button 
-                type="submit"
-                className="search-button" 
-                style={ButtonStyling}
-                // Falta alterar o OnClick
-                >Search</button>
-
-        </form>
-        
+                <button type="submit" className="search-button">
+                    Search
+                    <span id="search-icon">&#128269;</span>
+                </button>
+            </form>
+            {suggestions.length > 0 && (<ul className="suggestion-list"> {suggestions.map((athlete, index) =>
+            (<li key={index} onClick={() => handleSuggestion(athlete)} className="suggestion-item">
+                {athlete.name}
+            </li>
+            ))}
+            </ul>
+            )}
+        </div>
     );
 }
 
-export default SearchBar
+export default SearchBar;
