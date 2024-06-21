@@ -1,25 +1,13 @@
-// dataLoader.js
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
-
-function isNameInDatabase(name, database) {
-  const filePath = path.resolve(__dirname, database);
-  let nameFound = false;
-
-  return new Promise((resolve, reject) => {
-    fs.createReadStream(filePath)
-      .pipe(csv())
-      .on('data', (row) => {
-        if (row.name === name) {
-          nameFound = true;
-        }
-      })
-      .on('end', () => {
-        resolve(nameFound);
-      })
-      .on('error', (error) => {
-        reject(error);
-      });
-  });
-}
+async function isNameInDatabase(name, jsonUrl) {
+    try {
+      const response = await fetch(jsonUrl);
+      const data = await response.json();
+  
+      // Supomos que a base de dados seja um array de objetos e cada objeto tenha uma propriedade 'name'.
+      const nameFound = data.some(athlete => athlete.name === name);
+      return nameFound;
+    } catch (error) {
+      console.error("Erro ao buscar ou processar o arquivo JSON:", error);
+      return false;
+    }
+  }
