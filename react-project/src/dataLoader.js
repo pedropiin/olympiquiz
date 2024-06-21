@@ -1,6 +1,6 @@
 // dataLoader.js
 import fs from 'fs';
-import csv from 'csv-parser';
+import csv from 'csv-parse';
 import path from 'path';
 
 export const loadAthleteNames = (filePath) => {
