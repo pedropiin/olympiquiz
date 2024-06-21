@@ -3,7 +3,7 @@ import { selectRandomAthlete } from "./select-random-player.tsx";
 
 let filePath = "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json";
 
-async function getAthleteInput(input) {
+export async function getAthleteInput(input) {
     try {
         let inputAthlete;
 
