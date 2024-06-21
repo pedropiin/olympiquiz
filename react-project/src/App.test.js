@@ -74,10 +74,10 @@ describe ('isSearchingWorking', () => {
     expect(getAthleteInput("Gilberto Filho Gibao")).toBe(False);
   });
   test('should return false for a name that has special characters', async () => {
-    expect("Simone Biles#").toBe(False);
+    expect(getAthleteInput("Simone Biles#")).toBe(False);
   });
   test('should return false for a name not on the list', async () => {
-    expect("Bruno Cafeo").toBe(False);
+    expect(getAthleteInput("Bruno Cafeo")).toBe(False);
   });
 
 });
