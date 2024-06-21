@@ -1,15 +1,19 @@
 import React from "react";
 import "./PlayingTable.css";
 
-//So para testar
+import { play } from "../playOlimpiquiz.tsx";
+
+// So para testar
 const athletes = [
     { id: 1, name: 'Michael Phelps', nationality: 'USA', sport: 'Swimming', year: 2012, sex: 'M' },
-    { id: 2, name: 'Simone Biles', nationality: 'USA', sport: 'Gymnastics', year: 2016, sex: 'F' }
+    { id: 2, name: 'Simone Biles', nationality: 'USA', sport: 'Gymnastics', year: 2016, sex: 'F' },
+
 ];
 
-function PlayingTable() {
+export function PlayingTable() {
     return (
         <table>
+            <button id="test-button-playing" onClick={play}>Test Button</button>
             <thead>
                 <tr>
                     <th>#</th>
@@ -25,7 +29,7 @@ function PlayingTable() {
                     <tr key={athlete.id}>
                         <td>{index + 1}</td>
                         <td>{athlete.name}</td>
-                        <td>{athlete.nationality}</td>
+                        <td>{athlete.country}</td>
                         <td>{athlete.sport}</td>
                         <td>{athlete.year}</td>
                         <td>{athlete.sex}</td>

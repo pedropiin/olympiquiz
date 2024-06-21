@@ -9,51 +9,46 @@ body {
     background-color: #f5deb3;
 }
 
-.container {
-    text-align: center;
-}
-
 .header {
     background-color: f5deb3;
     padding: 20px;
 }
 
-.main {
-    padding: 20px;
+.main-table {
+    text-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 160px);
+    flex-direction: column;
+    align-items:flex-end;
+    justify-content: flex-end;
+    min-height: 100vh;
 }
 
 .image {
     width: auto;
     height: 90px;
     object-fit: contain;
-    padding-right: 90%;
 }
 
-.back-button {
-    position: absolute;
-    overflow: hidden;
-    top: 55px;
-    right: 40px;
-    width: 10%;
-
+.search-bar{
+    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items:center;
+    justify-content: center;
+
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor:pointer;
+}
+
+.playing-table{
+    margin-bottom: 0%;
+    width: 100%;
     text-align: center;
-    align-items: center;
-    align-content: center;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-end;
 
-    padding: 0.5% 0.5%;
-    border-radius: 5rem;
-
-    color: #000000;
-    background-color: #f3d4c7;
-    font-size: 1em;
-    letter-spacing: .15rem;
-    text-transform: uppercase;
-    font-weight: bold;
 }
