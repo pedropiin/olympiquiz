@@ -1,21 +1,25 @@
 // dataLoader.js
-import fs from 'fs';
-import csv from 'csv-parse';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
+const csv = require('csv-parser');
 
-export const loadAthleteNames = (filePath) => {
-  const athletes = [];
+function isNameInDatabase(name, database) {
+  const filePath = path.resolve(__dirname, database);
+  let nameFound = false;
+
   return new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
       .pipe(csv())
-      .on('data', (data) => {
-        athletes.push(data.name);
+      .on('data', (row) => {
+        if (row.name === name) {
+          nameFound = true;
+        }
       })
       .on('end', () => {
-        resolve(athletes);
+        resolve(nameFound);
       })
       .on('error', (error) => {
         reject(error);
       });
   });
-};
+}
