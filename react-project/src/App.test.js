@@ -3,7 +3,7 @@ import App from './App';
 import Home from './pages/Home';
 import { selectRandomAthlete } from './select-random-player';
 import { BrowserRouter } from 'react-router-dom';
-import { passwordChecker } from 'passwordChecker';
+import { passwordChecker } from './passwordChecker';
 
 test('renders Olympiquiz title', () => {
   render(
