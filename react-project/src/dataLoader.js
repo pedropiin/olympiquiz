@@ -1,4 +1,4 @@
-async function isNameInDatabase(name, jsonUrl) {
+export async function isNameInDatabase(name, jsonUrl) {
     try {
       const response = await fetch(jsonUrl);
       const data = await response.json();
