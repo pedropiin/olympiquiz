@@ -49,7 +49,7 @@ describe ('isPasswordValid', () => {
 // teste que verifica a funcionalidade de buscar um nome aleatório, particionamento(saída): nome dentro da lista ou não, valor limite: tamanho da string entre, menor nome para maior nome
 test('should return true if the random athlete belongs to the list and his name lenght is between 5 and 40 characters', async () => {
   const result = await selectRandomAthlete('../handling_data/data/medalists.csv');
-  expect(result).toBeInTheDocument(path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(True); 
+  expect(result.name).toBeInTheDocument(path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(True); 
   expect(length(result.name) >= 5 && length(result.name) <= 40)
 });
 
