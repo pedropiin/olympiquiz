@@ -3,22 +3,15 @@ import "./PlayingTable.css";
 
 import { play } from "../playOlimpiquiz.tsx";
 
-// So para testar
-const athletes = [
-    { id: 1, name: 'Michael Phelps', nationality: 'USA', sport: 'Swimming', year: 2012, sex: 'M' },
-    { id: 2, name: 'Simone Biles', nationality: 'USA', sport: 'Gymnastics', year: 2016, sex: 'F' },
-
-];
-
-export function PlayingTable() {
+export function PlayingTable({ athletes }) {
     return (
         <table>
-            <button id="test-button-playing" onClick={play}>Test Button</button>
+            {/*<button id="test-button-playing" onClick={play}>Test Button</button>*/}
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Nationality</th>
+                    <th>Country</th>
                     <th>Sport</th>
                     <th>Year</th>
                     <th>Sex</th>

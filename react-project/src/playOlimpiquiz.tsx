@@ -25,7 +25,7 @@ async function getAthleteInput(input) {
 
 export async function play(setAthletes) {
     let playerAttempts: Athlete[] = [];
-    let countAttempts = 0;
+    //let countAttempts = 0;
     let gameAthlete = await selectRandomAthlete(filePath);
 
     if (gameAthlete) {
@@ -37,7 +37,7 @@ export async function play(setAthletes) {
         if (inputAthlete.name === gameAthlete.name) { // Player got the right answer
             console.log("Congratulations!");
         } else { // Player got the wrong answer
-            countAttempts++;
+            //countAttempts++;
             console.log("Wrong Athlete from input");
             playerAttempts.push(inputAthlete);
         }

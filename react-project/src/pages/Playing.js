@@ -4,14 +4,32 @@ import "./Playing.css";
 import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
+import dataService from "../components/dataService";
 
 export const Playing = () => {
   const [input, setInput] = useState('');
+  const [athletes, setAthletes] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
 
   const updateInput = async (input) => {
     setInput(input);
     console.log("esse é o input", input)
-  
+    if (input.length > 0) {
+      const results = await dataService.fetchData(input);
+      setSuggestions(results);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const addAthlete = async (name) => {
+    const results = await dataService.fetchData(name);
+    if (results.length > 0) {
+      const athlete = results[0];
+      setAthletes(prevAthletes => [...prevAthletes, athlete]);
+      setInput('');
+      setSuggestions([]);
+    }
   };
 
   return (
@@ -20,13 +38,19 @@ export const Playing = () => {
         <img src={playingImg} className="image" alt="OlympiQuiz" />
         <BackButton />
       </header>
-        <div className='search-bar'>
-              <SearchBar input={input} onChange={updateInput} />
+      <div className="content">
+        <div className="search-bar">
+          <SearchBar
+            input={input}
+            onChange={updateInput}
+            addAthlete={addAthlete}
+            suggestions={suggestions}
+          />
         </div>
-        <div className='playing-table'>
-            <PlayingTable />
+        <div className="playing-table">
+          <PlayingTable athletes={athletes} />
         </div>
-      
+      </div>
     </div>
   );
 };
