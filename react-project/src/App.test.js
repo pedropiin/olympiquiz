@@ -53,13 +53,13 @@ test('should return true if the random athlete belongs to the list and his name 
   expect(result in medalists).toBe(True); 
   expect(length(result.name) >= 5 && length(result.name) <= 40)
 });
-const response = await fetch("https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
-const medalists_easy = await response.json();
 
 // teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
 describe ('isSearchingWorking', () => {
-
+  
   test('should return true for a medalist inside the list', async () => {
+    const response = await fetch("https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const medalists_easy = await response.json();
     expect(getAthleteInput("Michael Phelps") in medalists_easy).toBe(True);
   });
   test('should return false for a medalist with numbers on his name', async () => {
