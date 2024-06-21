@@ -4,7 +4,7 @@ import { selectRandomAthlete } from './select-random-player';
 import { BrowserRouter } from 'react-router-dom';
 import { passwordChecker } from './passwordChecker';
 import { getAthleteInput } from './playOlimpiquiz';
-import { loadAthleteNames } from './dataLoader'; // Importa a função para carregar os nomes
+import path from 'path'
 
 test('renders Olympiquiz title', () => {
   render(
@@ -21,73 +21,67 @@ test('should return a string when loading the athletes csv', async () => {
   expect(result).not.toBeNull(); 
 });
 
-describe('isPasswordValid', () => {
+describe ('isPasswordValid', () => {
   const maxLength = 12;
   const minLength = 4;
   test('should return true for a password within the allowed length', () => {
-    expect(passwordChecker('senhavalida', maxLength, minLength)).toBe(true); // len 11
+    expect(passwordChecker('senhavalida',maxLength,minLength)).toBe(true); //len 11
   });
   test('should return true for a password with the maximum length', () => {
-    expect(passwordChecker('aa0123456789', maxLength, minLength)).toBe(true); // len 12
+    expect(passwordChecker('aa0123456789',maxLength, minLength)).toBe(true); //len 12
   });
   test('should return true for a password with the min length', () => {
-    expect(passwordChecker('chok', maxLength, minLength)).toBe(true); // len 4
+    expect(passwordChecker('chok',maxLength, minLength)).toBe(true); //len 4
   });
   test('should return false for a password exceeding the maximum length', () => {
-    expect(passwordChecker('senhainvalida', maxLength, minLength)).toBe(false); // len 13
+    expect(passwordChecker('senhainvalida',maxLength, minLength)).toBe(false); //len 13
   });
   test('should return false for a password exceeding the minimum length', () => {
-    expect(passwordChecker('abc', maxLength, minLength)).toBe(false); // len 3
+    expect(passwordChecker('abc',maxLength, minLength)).toBe(false); //len 3
   });
   test('should return false for an empty password', () => {
-    expect(passwordChecker('', maxLength, minLength)).toBe(false); // len 0
+    expect(passwordChecker('',maxLength, minLength)).toBe(false); //len 0
   });
+
 });
 
-describe('random athlete tests', () => {
-  let medalists;
 
-  beforeAll(async () => {
-    medalists = await loadAthleteNames('../handling_data/data/medalists.csv');
-  });
-
-  test('should return true if the random athlete belongs to the list and his name length is between 5 and 40 characters', async () => {
-    const result = await selectRandomAthlete('../handling_data/data/medalists.csv');
-    expect(medalists).toContain(result);
-    expect(result.length).toBeGreaterThanOrEqual(5);
-    expect(result.length).toBeLessThanOrEqual(40);
-  });
+// teste que verifica a funcionalidade de buscar um nome aleatório, particionamento(saída): nome dentro da lista ou não, valor limite: tamanho da string entre, menor nome para maior nome
+test('should return true if the random athlete belongs to the list and his name lenght is between 5 and 40 characters', async () => {
+  const response = await fetch("https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists.json");
+  const medalists = await response.json();
+  const result = await selectRandomAthlete('../handling_data/data/medalists.csv');
+  expect(result in medalists).toBe(True); 
+  expect(length(result.name) >= 5 && length(result.name) <= 40)
 });
 
-describe('isSearchingWorking', () => {
-  let medalists;
-
-  beforeAll(async () => {
-    medalists = await loadAthleteNames('../handling_data/data/medalists-easy.csv');
+// teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
+describe ('isSearchingWorking', () => {
+  
+  test('should return true for a medalist inside the list', async () => {
+    expect(getAthleteInput("Michael Phelps") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(True);
+  });
+  test('should return false for a medalist with numbers on his name', async () => {
+    expect(getAthleteInput("Mich4el Phelps") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(False);
+  });
+  test('should return true for a medalist inside the list which name has minimun lenght (11 characters) and no numbers/special characters', async () => {
+    expect(getAthleteInput("Mayra Silva") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(True);
+  });
+  test('should return true for a medalist inside the list which name has maximum lenght (19 characters) and no numbers/special characters', async () => {
+    expect(getAthleteInput("Gilberto Filho Giba") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(True);
+  });
+  test('should return false for a medalist inside the list which name has less than minimun lenght (11 characters) and no numbers/special characters', async () => {
+    expect(getAthleteInput("Mayra Silv") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(False);
+  });
+  test('should return false for a medalist inside the list which name has more than maximum lenght (19 characters) and no numbers/special characters', async () => {
+    expect(getAthleteInput("Gilberto Filho Gibao") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(False);
+  });
+  test('should return false for a name that has special characters', async () => {
+    expect(getAthleteInput("Simone Biles#") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(False);
+  });
+  test('should return false for a name not on the list', async () => {
+    expect(getAthleteInput("Bruno Cafeo") in path.resolve(__dirname, "../../handling_data/data/medalists.csv")).toBe(False);
   });
 
-  test('should return true for a medalist inside the list', () => {
-    expect(medalists).toContain(getAthleteInput('Michael Phelps'));
-  });
-  test('should return false for a medalist with numbers on his name', () => {
-    expect(medalists).not.toContain(getAthleteInput('Mich4el Phelps'));
-  });
-  test('should return true for a medalist inside the list which name has minimum length (11 characters) and no numbers/special characters', () => {
-    expect(medalists).toContain(getAthleteInput('Mayra Silva'));
-  });
-  test('should return true for a medalist inside the list which name has maximum length (19 characters) and no numbers/special characters', () => {
-    expect(medalists).toContain(getAthleteInput('Gilberto Filho Giba'));
-  });
-  test('should return false for a medalist inside the list which name has less than minimum length (11 characters) and no numbers/special characters', () => {
-    expect(medalists).not.toContain(getAthleteInput('Mayra Silv'));
-  });
-  test('should return false for a medalist inside the list which name has more than maximum length (19 characters) and no numbers/special characters', () => {
-    expect(medalists).not.toContain(getAthleteInput('Gilberto Filho Gibao'));
-  });
-  test('should return false for a name that has special characters', () => {
-    expect(medalists).not.toContain(getAthleteInput('Simone Biles#'));
-  });
-  test('should return false for a name not on the list', () => {
-    expect(medalists).not.toContain(getAthleteInput('Bruno Cafeo'));
-  });
 });
+
