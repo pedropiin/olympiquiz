@@ -58,30 +58,28 @@ test('should return true if the random athlete belongs to the list and his name 
 describe ('isSearchingWorking', () => {
   
   test('should return true for a medalist inside the list', async () => {
-    const response = await fetch("https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
-    const medalists_easy = await response.json();
-    expect(getAthleteInput("Michael Phelps") in medalists_easy).toBe(True);
+    expect(getAthleteInput("Michael Phelps")).toBe(True);
   });
   test('should return false for a medalist with numbers on his name', async () => {
-    expect(getAthleteInput("Mich4el Phelps") in medalists_easy).toBe(False);
+    expect(getAthleteInput("Mich4el Phelps")).toBe(False);
   });
   test('should return true for a medalist inside the list which name has minimun lenght (11 characters) and no numbers/special characters', async () => {
-    expect(getAthleteInput("Mayra Silva") in medalists_easy).toBe(True);
+    expect(getAthleteInput("Mayra Silva")).toBe(True);
   });
   test('should return true for a medalist inside the list which name has maximum lenght (19 characters) and no numbers/special characters', async () => {
-    expect(getAthleteInput("Gilberto Filho Giba") in medalists_easy).toBe(True);
+    expect(getAthleteInput("Gilberto Filho Giba")).toBe(True);
   });
   test('should return false for a medalist inside the list which name has less than minimun lenght (11 characters) and no numbers/special characters', async () => {
-    expect(getAthleteInput("Mayra Silv") in medalists_easy).toBe(False);
+    expect(getAthleteInput("Mayra Silv")).toBe(False);
   });
   test('should return false for a medalist inside the list which name has more than maximum lenght (19 characters) and no numbers/special characters', async () => {
-    expect(getAthleteInput("Gilberto Filho Gibao") in medalists_easy).toBe(False);
+    expect(getAthleteInput("Gilberto Filho Gibao")).toBe(False);
   });
   test('should return false for a name that has special characters', async () => {
-    expect("Simone Biles#" in path.resolve(__dirname, "../../handling_data/data/medalists.csv") in medalists_easy).toBe(False);
+    expect("Simone Biles#").toBe(False);
   });
   test('should return false for a name not on the list', async () => {
-    expect("Bruno Cafeo" in path.resolve(__dirname, "../../handling_data/data/medalists.csv") in medalists_easy).toBe(False);
+    expect("Bruno Cafeo").toBe(False);
   });
 
 });
