@@ -47,7 +47,7 @@ describe ('isPasswordValid', () => {
 // Teste que verifica a funcionalidade de buscar um nome aleatório, particionamento(saída): nome dentro da lista ou não, valor limite: tamanho da string entre, menor nome para maior nome
 test('should return true if the random athlete belongs to the list and his name length is between 5 and 40 characters', async () => {
   const athlete = await selectRandomAthlete('../handling_data/data/medalists.csv');
-  const name = athlete.name;
+  const name = await athlete.name;
   console.log('Selected athlete:', name);
   expect(athlete.name.length).toBeGreaterThanOrEqual(5);
   expect(athlete.name.length).toBeLessThanOrEqual(40);
