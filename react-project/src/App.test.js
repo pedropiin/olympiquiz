@@ -47,10 +47,13 @@ describe ('isPasswordValid', () => {
 // Teste que verifica a funcionalidade de buscar um nome aleatório, particionamento(saída): nome dentro da lista ou não, valor limite: tamanho da string entre, menor nome para maior nome
 test('should return true if the random athlete belongs to the list and his name length is between 5 and 40 characters', async () => {
   const athlete = await selectRandomAthlete('../handling_data/data/medalists.csv');
-  console.log('Selected athlete:', athlete.name);
-  expect(length(athlete.name)).toBeGreaterThanOrEqual(5);
-  expect(length(athlete.name)).toBeLessThanOrEqual(40);
+  console.log('Selected athlete:', athlete);
+  expect(athlete).toBeDefined(); // Verifica se athlete não é undefined ou null
+  console.log('Selected athlete name:', athlete.name);
+  expect(athlete.name.length).toBeGreaterThanOrEqual(5);
+  expect(athlete.name.length).toBeLessThanOrEqual(40);
 });
+
 
 // Teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
 describe('isSearchingWorking', () => {
