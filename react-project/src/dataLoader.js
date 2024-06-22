@@ -1,6 +1,9 @@
 export async function isNameInDatabase(name, jsonUrl) {
     try {
       const response = await fetch(jsonUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
   
       // Supomos que a base de dados seja um array de objetos e cada objeto tenha uma propriedade 'name'.
@@ -11,3 +14,4 @@ export async function isNameInDatabase(name, jsonUrl) {
       return false;
     }
   }
+  
