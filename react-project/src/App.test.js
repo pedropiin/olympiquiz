@@ -49,9 +49,11 @@ test('should return true if the random athlete belongs to the list and his name 
   const athlete = await selectRandomAthlete('../handling_data/data/medalists.csv');
   console.log('Selected athlete:', athlete);
   expect(athlete).toBeDefined(); // Verifica se athlete não é undefined ou null
-  console.log('Selected athlete name:', athlete[2]);
-  expect(athlete.name.length).toBeGreaterThanOrEqual(5);
-  expect(athlete.name.length).toBeLessThanOrEqual(40);
+  console.log('Selected athlete name:', athlete[1]);
+  const nameFound = await isNameInDatabase(athlete[1], "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists.json");
+  expect(nameFound).toBe(true);
+  expect(athlete[1].length).toBeGreaterThanOrEqual(5);
+  expect(athlete[1].length).toBeLessThanOrEqual(40);
 });
 
 
