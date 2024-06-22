@@ -48,7 +48,7 @@ describe ('isPasswordValid', () => {
 test('should return true if the random athlete belongs to the list and his name length is between 5 and 40 characters', async () => {
   const result = await selectRandomAthlete('../handling_data/data/medalists.csv');
   console.log('Selected athlete:', result);
-  const nameFound = await isNameInDatabase(result.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists.json");
+  const nameFound = await isNameInDatabase(result, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists.json");
   expect(nameFound).toBe(true); 
   expect(result.name.length).toBeGreaterThanOrEqual(5);
   expect(result.name.length).toBeLessThanOrEqual(40);
