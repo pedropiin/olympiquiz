@@ -1,8 +1,6 @@
 import React from "react";
 import "./PlayingTable.css";
 
-import { play } from "../playOlimpiquiz.tsx";
-
 // So para testar
 const athletes = [
     { id: 1, name: 'Michael Phelps', nationality: 'USA', sport: 'Swimming', year: 2012, sex: 'M' },
