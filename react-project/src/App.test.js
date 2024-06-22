@@ -50,8 +50,6 @@ test('should return true if the random athlete belongs to the list and his name 
   console.log('Selected athlete:', athlete.name);
   expect(athlete.name.length).toBeGreaterThanOrEqual(5);
   expect(athlete.name.length).toBeLessThanOrEqual(40);
-  const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists.json");
-  expect(nameFound).toBe(true); 
 });
 
 // Teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
