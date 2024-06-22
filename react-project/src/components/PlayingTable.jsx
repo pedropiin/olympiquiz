@@ -1,6 +1,8 @@
 import React from "react";
 import "./PlayingTable.css";
 
+
+export function PlayingTable({ athletes }) {
     return (
         <table>
             {/*<button id="test-button-playing" onClick={play}>Test Button</button>*/}
