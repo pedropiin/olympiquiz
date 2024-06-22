@@ -5,7 +5,7 @@ export async function isNameInDatabase(pessoa, jsonUrl) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(`Searching for name: ${pessoa.name}`);
+      console.log(`Searching for name: ${String(pessoa.name)}`);
       const nameFound = data.some(athlete => athlete.name === pessoa.name);
       console.log(`Found: ${nameFound}`);
       return nameFound;
