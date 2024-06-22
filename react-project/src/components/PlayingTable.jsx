@@ -1,7 +1,6 @@
 import React from "react";
 import "./PlayingTable.css";
 
-import { play } from "../playOlimpiquiz.tsx";
 
 export function PlayingTable({ athletes }) {
     return (
