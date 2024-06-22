@@ -57,58 +57,50 @@ test('should return true if the random athlete belongs to the list and his name 
 // Teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
 describe('isSearchingWorking', () => {
   test('should return true for a medalist inside the list', async () => {
-    const name = getAthleteInput("Michael Phelps").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Michael Phelps");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(true);
   });
   
   test('should return false for a medalist with numbers on his name', async () => {
-    const name = getAthleteInput("Mich4el Phelps").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Mich4el Phelps");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(false);
   });
 
   test('should return true for a medalist inside the list which name has minimum length (11 characters) and no numbers/special characters', async () => {
-    const name = getAthleteInput("Mayra Silva").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Mayra Silva");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(true);
   });
 
   test('should return true for a medalist inside the list which name has maximum length (19 characters) and no numbers/special characters', async () => {
-    const name = getAthleteInput("Gilberto Filho Giba").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Gilberto Filho Giba");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(true);
   });
 
   test('should return false for a medalist inside the list which name has less than minimum length (11 characters) and no numbers/special characters', async () => {
-    const name = getAthleteInput("Mayra Silv").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Mayra Silv");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(false);
   });
 
   test('should return false for a medalist inside the list which name has more than maximum length (19 characters) and no numbers/special characters', async () => {
-    const name = getAthleteInput("Gilberto Filho Gibao").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Gilberto Filho Gibao");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(false);
   });
 
   test('should return false for a name that has special characters', async () => {
-    const name = getAthleteInput("Simone Biles#").name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput("Simone Biles#");
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(false);
   });
 
   test('should return false for a name not on the list', async () => {
-    const name = getAthleteInput('Bruno Cafeo').name;
-    console.log(`Testing with name: ${name}`);
-    const nameFound = await isNameInDatabase(name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
+    const athlete = getAthleteInput('Bruno Cafeo');
+    const nameFound = await isNameInDatabase(athlete.name, "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json");
     expect(nameFound).toBe(false);
   });
 });
