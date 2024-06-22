@@ -48,8 +48,8 @@ describe ('isPasswordValid', () => {
 test('should return true if the random athlete belongs to the list and his name length is between 5 and 40 characters', async () => {
   const athlete = await selectRandomAthlete('../handling_data/data/medalists.csv');
   console.log('Selected athlete:', athlete.name);
-  expect(athlete.name.length).toBeGreaterThanOrEqual(5);
-  expect(athlete.name.length).toBeLessThanOrEqual(40);
+  expect((athlete.name).length).toBeGreaterThanOrEqual(5);
+  expect((athlete.name).length).toBeLessThanOrEqual(40);
 });
 
 // Teste que verifica a funcionalidade da rotina de buscar os medalistas na lista medalists-easy, particionamento: medalistas e não medalistas e sem números, valor limite: min 11 caracteres, max 19 caracteres
