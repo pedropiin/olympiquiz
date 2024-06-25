@@ -13,7 +13,6 @@ export const Playing = () => {
 
   const updateInput = async (input) => {
     setInput(input);
-    console.log("esse é o input", input)
     if (input.length > 0) {
       const results = await dataService.fetchData(input);
       setSuggestions(results);
@@ -24,11 +23,15 @@ export const Playing = () => {
 
   const addAthlete = async (name) => {
     const results = await dataService.fetchData(name);
+    console.log(results);
+    console.log(athletes);
     if (results.length > 0) {
-      const athlete = results[0];
-      setAthletes(prevAthletes => [...prevAthletes, athlete]);
-      setInput('');
-      setSuggestions([]);
+      if (!athletes.some(athlete => athlete.id === results[0].id)) {
+        const athlete = results[0];
+        setAthletes(prevAthletes => [...prevAthletes, athlete]);
+        setInput('');
+        setSuggestions([]);
+      } 
     }
   };
 

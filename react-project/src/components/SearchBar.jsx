@@ -9,7 +9,9 @@ const SearchBar = ({ input, onChange, addAthlete, suggestions }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addAthlete(input);
+        if (!e) {
+            addAthlete(input);
+        }
     }
 
     const handleSuggestion = (athlete) => {
@@ -31,7 +33,7 @@ const SearchBar = ({ input, onChange, addAthlete, suggestions }) => {
                     <span id="search-icon">&#128269;</span>
                 </button>
             </form>
-            {suggestions.length > 0 && (<ul className="suggestion-list"> {suggestions.map((athlete, index) =>
+            {suggestions.length > 0 && (<ul className="suggestion-list"> {suggestions.slice(0, 8).map((athlete, index) =>
             (<li key={index} onClick={() => handleSuggestion(athlete)} className="suggestion-item">
                 {athlete.name}
             </li>
