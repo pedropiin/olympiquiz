@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './SearchBar.css';
 
 const SearchBar = ({ input, onChange, addAthlete, suggestions }) => {
