@@ -28,7 +28,7 @@ export const Playing = () => {
     const results = await dataService.fetchData(name);
     console.log(results);
     console.log(athletes);
-    if(athletes.length == 0){
+    if(athletes.length === 0){
       justStarted = 1; //se acabou de comecar o jogo, achar um atleta aleatório
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear

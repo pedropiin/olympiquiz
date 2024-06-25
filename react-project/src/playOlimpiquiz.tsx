@@ -27,7 +27,7 @@ export async function getAthleteInput(input) {
 export async function play(input, justStarted) {
     let playerAttempts: Athlete[] = [];
     //let countAttempts = 0;
-    if(justStarted == 1){
+    if(justStarted === 1){
         gameAthlete = await selectRandomAthlete(filePath);
     }
     if (gameAthlete){
