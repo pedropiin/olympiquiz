@@ -5,12 +5,15 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
+import { play } from "../playOlimpiquiz.tsx";
+let justStarted;
+let chosenAthlete;
 
 export const Playing = () => {
   const [input, setInput] = useState('');
   const [athletes, setAthletes] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-
+  const [chosenAthleteState, setChosenAthlete] = useState({});
   const updateInput = async (input) => {
     setInput(input);
     if (input.length > 0) {
@@ -25,14 +28,28 @@ export const Playing = () => {
     const results = await dataService.fetchData(name);
     console.log(results);
     console.log(athletes);
-    if (results.length > 0) {
-      if (!athletes.some(athlete => athlete.id === results[0].id)) {
-        const athlete = results[0];
-        setAthletes(prevAthletes => [...prevAthletes, athlete]);
-        setInput('');
-        setSuggestions([]);
-      } 
+    if(athletes.length === 0){
+      justStarted = 1; //se acabou de comecar o jogo, achar um atleta aleatório
+    } else {
+      justStarted = 0; //se já está rolando o jogo, não precisa sortear
     }
+    chosenAthlete = await play(name, justStarted);
+    console.log(chosenAthlete)
+    if (chosenAthlete) {
+      setChosenAthlete(chosenAthlete)
+      if (results.length > 0) {
+        if (!athletes.some(athlete => athlete.id === results[0].id)) {
+          const athlete = results[0];
+          setAthletes(prevAthletes => [...prevAthletes, athlete]);
+          setInput('');
+          setSuggestions([]);
+        } 
+      }
+    }
+    else {
+      console.log("Its over!")
+    }
+    console.log("chosen athlete: " + chosenAthleteState.name)
   };
 
   return (
@@ -51,7 +68,7 @@ export const Playing = () => {
           />
         </div>
         <div className="playing-table">
-          <PlayingTable athletes={athletes} />
+          <PlayingTable athletes={athletes} chosenAthlete={chosenAthleteState}/>
         </div>
       </div>
     </div>
