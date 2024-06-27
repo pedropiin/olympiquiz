@@ -5,7 +5,7 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
-import { Play } from "../playOlimpiquiz.tsx";
+import Play  from "../playOlimpiquiz.tsx";
 let justStarted;
 let chosenAthlete;
 
