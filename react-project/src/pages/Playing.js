@@ -5,22 +5,15 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
-<<<<<<< HEAD
-import Play from "../playOlimpiquiz.tsx";  
-
-=======
 import Play  from "../playOlimpiquiz.tsx";
 let justStarted;
->>>>>>> e130456 (nada)
 let chosenAthlete;
-let justStarted;
 
 const Playing = () => {
   const [input, setInput] = useState('');
   const [athletes, setAthletes] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const [chosenAthleteState, setChosenAthleteState] = useState({});
-
+  const [chosenAthleteState, setChosenAthlete] = useState({});
   const updateInput = async (input) => {
     setInput(input);
     if (input.length > 0) {
@@ -35,7 +28,7 @@ const Playing = () => {
     const results = await dataService.fetchData(name);
     console.log(results);
     console.log(athletes);
-    if (athletes.length === 0) {
+    if(athletes.length === 0){
       justStarted = 1; //se acabou de comecar o jogo, achar um atleta aleatório
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear
