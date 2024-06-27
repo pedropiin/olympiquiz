@@ -28,7 +28,7 @@ export async function getAthleteInput(input) {
   }
 }
 
-const Play = ({ initialInput, justStarted }) => {
+export const Play = ({ initialInput, justStarted }) => {
   const [input, setInput] = useState(initialInput);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -106,4 +106,4 @@ const Play = ({ initialInput, justStarted }) => {
   );
 };
 
-export default Play;
+//export default Play;
