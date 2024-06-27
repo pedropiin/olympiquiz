@@ -5,8 +5,9 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
-import Play from "../playOlimpiquiz.tsx";  // Aqui, corrigimos a importação de Play
+import Play from "../playOlimpiquiz.tsx";  
 
+let chosenAthlete;
 let justStarted;
 
 const Playing = () => {
@@ -14,7 +15,6 @@ const Playing = () => {
   const [athletes, setAthletes] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [chosenAthleteState, setChosenAthleteState] = useState({});
-  const [playing, setPlaying] = useState(false);
 
   const updateInput = async (input) => {
     setInput(input);
@@ -35,12 +35,23 @@ const Playing = () => {
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear
     }
-    setPlaying(true); // Ativa o componente Play
-  };
-
-  const handleChooseAthlete = (athlete) => {
-    setChosenAthleteState(athlete);
-    setPlaying(false); // Desativa o componente Play após escolher o atleta
+    chosenAthlete = await Play(name, justStarted);
+    console.log(chosenAthlete)
+    if (chosenAthlete) {
+      setChosenAthlete(chosenAthlete)
+      if (results.length > 0) {
+        if (!athletes.some(athlete => athlete.id === results[0].id)) {
+          const athlete = results[0];
+          setAthletes(prevAthletes => [...prevAthletes, athlete]);
+          setInput('');
+          setSuggestions([]);
+        } 
+      }
+    }
+    else {
+      console.log("Its over!")
+    }
+    console.log("chosen athlete: " + chosenAthleteState.name)
   };
 
   return (
@@ -62,13 +73,6 @@ const Playing = () => {
           <PlayingTable athletes={athletes} chosenAthlete={chosenAthleteState}/>
         </div>
       </div>
-      {playing && (
-        <Play
-          initialInput={input}
-          justStarted={justStarted}
-          onChooseAthlete={handleChooseAthlete}
-        />
-      )}
     </div>
   );
 };
