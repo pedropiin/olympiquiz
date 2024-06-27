@@ -9,7 +9,7 @@ import { Play } from "../playOlimpiquiz.tsx";
 let justStarted;
 let chosenAthlete;
 
-export const Playing = () => {
+const Playing = () => {
   const [input, setInput] = useState('');
   const [athletes, setAthletes] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
