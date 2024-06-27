@@ -5,15 +5,17 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
-import Play  from "../playOlimpiquiz.tsx";
+import Play from "../playOlimpiquiz.tsx";  // Aqui, corrigimos a importação de Play
+
 let justStarted;
-let chosenAthlete;
 
 const Playing = () => {
   const [input, setInput] = useState('');
   const [athletes, setAthletes] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const [chosenAthleteState, setChosenAthlete] = useState({});
+  const [chosenAthleteState, setChosenAthleteState] = useState({});
+  const [playing, setPlaying] = useState(false);
+
   const updateInput = async (input) => {
     setInput(input);
     if (input.length > 0) {
@@ -28,28 +30,17 @@ const Playing = () => {
     const results = await dataService.fetchData(name);
     console.log(results);
     console.log(athletes);
-    if(athletes.length === 0){
+    if (athletes.length === 0) {
       justStarted = 1; //se acabou de comecar o jogo, achar um atleta aleatório
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear
     }
-    chosenAthlete = await Play(name, justStarted);
-    console.log(chosenAthlete)
-    if (chosenAthlete) {
-      setChosenAthlete(chosenAthlete)
-      if (results.length > 0) {
-        if (!athletes.some(athlete => athlete.id === results[0].id)) {
-          const athlete = results[0];
-          setAthletes(prevAthletes => [...prevAthletes, athlete]);
-          setInput('');
-          setSuggestions([]);
-        } 
-      }
-    }
-    else {
-      console.log("Its over!")
-    }
-    console.log("chosen athlete: " + chosenAthleteState.name)
+    setPlaying(true); // Ativa o componente Play
+  };
+
+  const handleChooseAthlete = (athlete) => {
+    setChosenAthleteState(athlete);
+    setPlaying(false); // Desativa o componente Play após escolher o atleta
   };
 
   return (
@@ -71,6 +62,13 @@ const Playing = () => {
           <PlayingTable athletes={athletes} chosenAthlete={chosenAthleteState}/>
         </div>
       </div>
+      {playing && (
+        <Play
+          initialInput={input}
+          justStarted={justStarted}
+          onChooseAthlete={handleChooseAthlete}
+        />
+      )}
     </div>
   );
 };

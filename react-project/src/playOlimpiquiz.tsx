@@ -1,7 +1,8 @@
+// playOlimpiquiz.tsx
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import { Athlete } from './select-random-player.tsx';
-import { selectRandomAthlete } from './select-random-player.tsx';
+import { Athlete } from './select-random-player';
+import { selectRandomAthlete } from './select-random-player';
 import { useNavigate } from 'react-router-dom';
 
 let filePath = 'https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json';
@@ -26,7 +27,7 @@ export async function getAthleteInput(input) {
   }
 }
 
-const Play = ({ initialInput, justStarted }) => {
+const Play = ({ initialInput, justStarted, onChooseAthlete }) => {
   const [input, setInput] = useState(initialInput);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
@@ -71,10 +72,11 @@ const Play = ({ initialInput, justStarted }) => {
       if (inputAthlete) {
         if (inputAthlete.name === gameAthlete.name) {
           openModal('Congratulations!');
+          onChooseAthlete(inputAthlete);
         } else {
           setAttempts((prevAttempts) => [...prevAttempts, inputAthlete]);
           if (attempts.length >= 5) {
-            openModal('Game Over!');
+            openModal('Game over! Try again');
           }
         }
       }
