@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { Athlete } from "./select-random-player.tsx";
 import { selectRandomAthlete } from "./select-random-player.tsx";
+import { useNavigate } from 'react-router-dom';
 
 let filePath = "https://raw.githubusercontent.com/pedropiin/olympiquiz/develop/handling_data/data/medalists-easy.json";
 let gameAthlete;
@@ -31,6 +32,7 @@ export async function play(initialInput, justStarted) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
     const[Attempts, setAttempts] = useState<Athlete[]>([]);
+    const navigate = useNavigate();
 
     const openModal = (message: string) => {
         setModalMessage(message);
@@ -42,7 +44,7 @@ export async function play(initialInput, justStarted) {
     }
 
     const onMenu = () => {
-        
+        navigate('/');
     }
     
     const resetGame = () => {
