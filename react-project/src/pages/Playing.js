@@ -5,7 +5,7 @@ import PlayingTable from "../components/PlayingTable";
 import BackButton from '../components/BackButton';
 import SearchBar from "../components/SearchBar";
 import dataService from "../components/dataService";
-import { play } from "../playOlimpiquiz.tsx";
+import { Play } from "../playOlimpiquiz.tsx";
 let justStarted;
 let chosenAthlete;
 
@@ -33,7 +33,7 @@ export const Playing = () => {
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear
     }
-    chosenAthlete = await play(name, justStarted);
+    chosenAthlete = await Play(name, justStarted);
     console.log(chosenAthlete)
     if (chosenAthlete) {
       setChosenAthlete(chosenAthlete)
