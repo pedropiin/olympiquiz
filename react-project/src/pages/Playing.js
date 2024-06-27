@@ -33,7 +33,7 @@ const Playing = () => {
     } else {
       justStarted = 0; //se já está rolando o jogo, não precisa sortear
     }
-    chosenAthlete = await Play(name, justStarted);
+    chosenAthlete = <Play name={name} justStarted={justStarted} />;
     console.log(chosenAthlete)
     if (chosenAthlete) {
       setChosenAthlete(chosenAthlete)
