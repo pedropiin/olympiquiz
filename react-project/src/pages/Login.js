@@ -1,6 +1,6 @@
 import React from 'react';
 import '../pages/Login.css';
-import { deleteUsers } from '../getLogin';
+// import { deleteUsers } from '../getLogin';
 import { SignUp } from './SignUp';
 import { SignIn } from './SignIn';
 import BackButton from '../components/BackButton';
