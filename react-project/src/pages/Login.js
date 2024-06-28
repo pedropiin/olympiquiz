@@ -12,7 +12,7 @@ const Login = () => {
             <div className='home-text'>
                 <p>OlympiQuiz</p>
             </div>
-            <button className='delete-users-button' id='delete-users-button' onClick={deleteUsers}>DELETE TEST</button>
+            <button className='delete-users-button' id='delete-users-button' onClick={deleteUsers}>DELETE TEST</button> //eslint-disable-line no-unused-vars
             <BackButton />
             <div className='forms-container'>
                 <SignUp />
